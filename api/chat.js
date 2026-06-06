@@ -7,16 +7,18 @@ export default async function handler(req, res) {
     if (req.method !== 'POST') return res.status(405).json({ error: 'Method Not Allowed' });
 
     try {
-        const apiKey = process.env.GEMINI_API_KEY; 
-        const googleUrl = `https://googleapis.com{apiKey}`;
+        const apiKey = process.env.GEMINI_API_KEY;
+        if (!apiKey) {
+            return res.status(500).json({ error: "Server Configuration Error: API Key is missing on Vercel." });
+        }
 
-        // Ensure req.body is parsed correctly if Vercel receives it as a string
+        const googleUrl = `https://googleapis.com{apiKey}`;
         const parsedBody = typeof req.body === 'string' ? JSON.parse(req.body) : req.body;
 
         const response = await fetch(googleUrl, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ contents: parsedBody.contents }) // Explicitly matches ChatHistory structure
+            body: JSON.stringify({ contents: parsedBody.contents })
         });
 
         const data = await response.json();
