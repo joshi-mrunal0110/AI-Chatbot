@@ -20,7 +20,8 @@ export default async function handler(req, res) {
       return res.status(500).json({ error: 'API Key missing on Vercel Dashboard.' });
     }
 
-    const googleUrl = `https://googleapis.com{apiKey}`;
+    const googleUrl =
+  `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`;
 
     // 2. Safely capture the body payload regardless of how Vercel passes it
     const requestData = typeof req.body === 'string' ? JSON.parse(req.body) : req.body;
