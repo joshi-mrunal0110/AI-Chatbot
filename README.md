@@ -1,4 +1,4 @@
-## ✅ **ATS-Friendly Project Description — AI Chatbot (HTML, CSS, JavaScript, Gemini API)**
+## ✅Gemini Powered AI Chatbot (HTML, CSS, JavaScript, Gemini API)**
 
 **AI Chatbot using Gemini API | HTML, CSS, JavaScript**
 **Tech Stack:** HTML, CSS, JavaScript, Gemini API, REST APIs
